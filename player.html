@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body style="margin:0">
+  <audio id="bgm" src="1314.mp3" loop></audio>
+
+  <!-- 遮罩 ➜ 默认隐藏，只有在自动播放失败时再显示 -->
+  <div id="unblock" style="
+        position:fixed; inset:0;
+        background:rgba(0,0,0,.6);
+        color:#fff; display:flex;
+        align-items:center; justify-content:center;
+        font-size:22px; font-family:sans-serif;
+        cursor:pointer; visibility:hidden;">
+    点击开启音乐 🎵
+  </div>
+
+  <script>
+    const a   = document.getElementById('bgm');
+    const tip = document.getElementById('unblock');
+
+    // 尝试直接播放
+    a.play().catch(() => {
+      // 失败 → 显示提示
+      tip.style.visibility = 'visible';
+
+      // 用户点击任意位置都可以解锁
+      const unlock = () => {
+        a.play().then(()=> tip.remove());
+        document.removeEventListener('click', unlock);
+      };
+      document.addEventListener('click', unlock, { once:true });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生日小视频</title>
+
+  <!-- 样式表 -->
+  <link rel="stylesheet" href="styles.css" type="text/css">
+
+  <style>
+    /* iframe 区域横向滚动 */
+    .iframepage {
+      -webkit-overflow-scrolling: touch;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+
+    /* 隐藏滚动条 */
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    /* 局部滚动容器 */
+    .scroll-el {
+      overflow: auto;
+    }
+
+     /* 音乐按钮样式 */
+     #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    #music-btn.playing {
+      background: #4CAF50;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 直接嵌入音频（初始静音） -->
+  <audio id="bgm" src="1314.mp3" loop muted></audio>
+
+  <!-- 音乐控制按钮 -->
+  <button id="music-btn">🎵 点击开启音乐</button>
+
+  <!-- 主内容 iframe -->
+  <iframe
+    src="login.html"
+    id="iframepage"
+    scrolling="no"
+    onload="changeFrameHeight()"
+    frameborder="0"
+    style="width:100%;"
+    marginwidth="0"
+    marginheight="0">
+  </iframe>
+
+  <!-- 脚本：只保留一个版本的 jQuery 即可 -->
+  <script src="jquery-2.1.1.min.js"></script>
+  <script src="jquery-1.8.4.min.js"></script>
+  <script>
+   
+
+   const btn = document.getElementById('music-btn');
+    const audio = document.getElementById('bgm');
+
+    btn.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.muted = false; // 解除静音
+        audio.play().then(() => {
+          btn.textContent = '🔊 音乐播放中';
+          btn.classList.add('playing');
+        }).catch(e => {
+          alert('播放失败: ' + e.message);
+        });
+      } else {
+        audio.pause();
+        btn.textContent = '🎵 点击开启音乐';
+        btn.classList.remove('playing');
+      }
+    });
+  </script>
+</body>
+
+</html>

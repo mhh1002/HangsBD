@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter To U</title>
+  <style>
+    .photo-container {
+      position: fixed;
+      left: 30px;
+      top: 25%;
+      transform: translateY(-50%) rotate(5deg);
+      z-index: 100;
+    }
+    .photo-container img {
+      width: 200px;
+      border: 3.5px solid rgb(233, 244, 253);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* 在原有 .photo-container 样式中添加 ::after 伪元素 */
+    .photo-container::after {
+      content: "📌";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-20deg);
+      font-size: 24px;
+      z-index: 2; /* 确保在图钉上方 */
+      pointer-events: none; /* 防止点击干扰 */
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      background-image: linear-gradient(-225deg, 
+      #2cd8e5 0%, 
+      #c5c1ff 56%, 
+      #ffbac3 100%, 
+      #a8edea 70%,
+      #fed6e3 57%);
+      background-size: 300% 300%;            /* 铺满整个页面 */
+      background-position: center;       /* 居中显示 */
+      
+      animation: gradient 4s ease infinite;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Noto Sans SC", sans-serif;
+    }
+
+    @keyframes gradient{
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .heart {
+      position: absolute;
+      top: 350px;
+      left: 250px;
+      transform: scale(2.5);
+    }
+    .letter {
+      position: relative;
+      min-height: 700px;
+      max-width: 1200px;
+      width: 70%;
+      padding: 40px 48px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      background: rgba(24, 28, 42, 0.70);  
+      color: #f2f7f7;                    
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      line-height: 1.85;
+      margin-left: 560px;
+      margin-right: 30px;
+      font-size: 16px;
+      color: #f6fdfd;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+      white-space: pre-wrap;
+    }
+
+    .greeting {
+      position: absolute;
+      top: 0px;
+      left: 10px; 
+
+      text-align: right;
+      font-weight: bold;
+      color: #fdfeff;
+      text-shadow: 0 2.3px 4px rgba(225, 159, 249, 0.823);
+    }
+
+    .signature {
+      position:absolute;
+      bottom: 20px;
+      right: 30px; 
+      
+      text-align: right;
+      font-weight: bold;
+      color: #fafcff;
+      text-shadow: 0 2px 4px rgba(255, 179, 252, 0.823);
+    }
+    @media (max-width:500px){
+      .letter { padding: 28px 24px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter">
+  （在这里写下你的信。直接把整段中文 / 英文复制进来即可，保留换行。）  
+  感谢你一直以来的陪伴与鼓励……  
+  <这里随意发挥❤️>
+
+祝你生日快乐！
+
+  <div class="greeting">
+    亲爱的张航：
+    </div>
+
+    <div class="signature">-- Ho Hon Ma<br>2025-05-19</div>
+  </div>
+
+  <div class="heart">
+    <img src="" alt="">
+  💗
+  </div>
+  <!--页面照片-->
+  <div class="photo-container">
+    <img src="luvu1.JPG" alt="pic1">
+    </div>
+
+  <div class="photo-container"
+    style="left: 320px; top: 73.2%;
+    transform: rotate(-10deg);">
+    <img src="luvu2.JPG" alt="pic2">
+    </div>
+
+    <div class="photo-container"
+    style="left: 310px; top: 44.5%;
+    transform: rotate(2deg);">
+    <img src="luvu3.JPG" alt="pic3">
+    </div>
+
+    <div class="photo-container"
+    style="left: 300px; top: 2.5%;
+    transform: rotate(-10deg);">
+    <img src="luvu4.PNG" alt="pic4">
+    </div>
+
+    <div class="photo-container"
+    style="left: 30px; top: 55%;
+    transform: scale(1.1); transform: rotate(-7deg);">
+    <img src="luvu5.PNG" alt="pic5">
+    </div>
+
+
+</body>
+</html>
+
+
